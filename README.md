@@ -12,14 +12,10 @@ This project uses JavaScript [ES6](https://github.com/lukehoban/es6features)
 ## Http Response
 
 ### StandardResponse
-GenericResponse turns http responses into 200-successful ones so that the caller-client decides the next step.
+StandardResponse wraps all http-responses into successful http-responses. 
+So, the caller-client decides the next step.
 
-For example, upon receiving 400's or 500's responses codes, some frameworks will re send the request automatically again.
+For example, upon receiving 400's or 500's http-response-codes, some frameworks will re send the request automatically again, 
+or would timeout. StandardResponse would change this behavior.    
 
-Including the original requests upon failure helps debugging in dev mode.
-
-#### Prerequisites
-- To return a copy of the original request:
-````
-process.env.DEBUG_RESPONSE='true'
-```` 
+Including the original requests is help full in debug mode.

@@ -1,0 +1,34 @@
+{
+  "name": "api-meady-easy",
+  "version": "1.0.0",
+  "description": "A set of request and response utilities commonly used in real life API development",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^5.6.0"
+  },
+  "devDependencies": {
+    "eslint-config-google": "^0.10.0",
+    "jest": "^23.6.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogermori/api-meady-easy.git"
+  },
+  "keywords": [
+    "http",
+    "utils",
+    "request",
+    "utils",
+    "response",
+    "utils"
+  ],
+  "author": "Roger Mori",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rogermori/api-meady-easy/issues"
+  },
+  "homepage": "https://github.com/rogermori/api-meady-easy#readme"
+}
