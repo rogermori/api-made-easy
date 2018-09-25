@@ -1,0 +1,7 @@
+{
+  "errorMessage": {
+    "body": {
+      "invalidBodyRequest": "body request is blank or empty"
+    }
+  }
+}
