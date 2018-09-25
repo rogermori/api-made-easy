@@ -19,3 +19,15 @@ For example, upon receiving 400's or 500's http-response-codes, some frameworks 
 or would timeout. StandardResponse would change this behavior.    
 
 Including the original requests is help full in debug mode.
+
+#### Usage
+````
+const StandardResponse = require('pathTo/StandardResponse');
+.....
+const happyResponse = new StandardResponse(
+    true,
+    'All good',
+    {id: 1},
+    {id:1, name: 'Peter Parker'}
+).getResponse();
+````
