@@ -1,20 +1,40 @@
-const intersection = require('./actions').intersection;
-/*
-const isArray=bodyKeys=>bodyKeys && Array.isArray(bodyKeys);
-const isObject=body=>body && typeof body !== 'object';
-*/
+const K = require('./constants');
+const ErrorMessages = require('../../config').errorMessage;
+const isEmptyArray = require('../../util').isEmptyArray;
+const isEmptyObject = require('../../util').isEmptyObject;
 
-const bodyInsersectionWith = (action) => {
-  // const body = requestBody;
-   const body = Object.assign({},action.payload);
-   console.log(body);
-   switch(action.type) {
-       case K.Intersection :
-       case K.Difference :
-       default :
-           return body;
-   }
-
+module.exports = (action) => {
+  const body = Object.assign({}, action.payload);
+  if (isEmptyObject(body)) {
+    throw new Error(ErrorMessages.body.invalidBodyRequest);
+  }
+  switch (action.type) {
+    case K.Intersection:
+      return ( (desiredKeys) => {
+        if (isEmptyArray(desiredKeys)) {
+          throw new Error(ErrorMessages.keys.invalidKeys);
+        }
+        return desiredKeys.reduce( (bag, key)=> {
+          bag[key] = body[key];
+          return bag;
+        },
+        {});
+      });
+    case K.Difference:
+      return ( (desiredKeys) => {
+        if (isEmptyArray(desiredKeys)) {
+          throw new Error(ErrorMessages.keys.invalidKeys);
+        }
+        const desiredKeysSet = new Set(desiredKeys);
+        return Object.keys(body).reduce( (bag, key)=> {
+          if (!desiredKeysSet.has(key)) bag[key] = body[key];
+          return bag;
+        },
+        {}
+        );
+      });
+    default:
+      return body;
+  }
 };
 
-bodyInsersectionWith({hello: 'world'});

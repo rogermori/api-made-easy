@@ -1,7 +1,13 @@
 {
   "errorMessage": {
     "body": {
-      "invalidBodyRequest": "body request is blank or empty"
+      "invalidBodyRequest": "Body's request is empty"
+    },
+    "keys" : {
+      "invalidKeys": "Array of keys is empty"
+    },
+    "object" : {
+      "invalidObject": "Object is empty"
     }
   }
 }
