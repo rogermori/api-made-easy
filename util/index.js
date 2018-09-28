@@ -1,5 +1,7 @@
 const NoU = (obj) => (obj === null || obj === 'undefined');
-
+function isObject(o) {
+    return o instanceof Object && o.constructor === Object;
+}
 const isEmpty = (obj) => {
   if (NoU(obj)) return true;
   switch (typeof obj) {
