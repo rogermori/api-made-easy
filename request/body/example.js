@@ -18,4 +18,13 @@ console.log(nameNGrades); // { name: 'Peter Parker', grades: [ 'a', 'c' ] }
 console.log(ageNdob); // { age: null, dob: undefined }
 console.log(address); // { address: undefined }
 
-
+const bodyDifference = Body(difference(bodyRequest));
+const bodyWithNoRoles = bodyDifference(['roles']);
+console.log(bodyWithNoRoles);
+/*
+{   name: 'Peter Parker',
+    grades: [ 'a', 'c' ],
+    age: null,
+    dob: undefined
+}
+*/

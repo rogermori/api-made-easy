@@ -1,5 +1,32 @@
 const util = require('../index');
 
+describe('isObject tests', ()=>{
+  it('[] is not an object', ()=>{
+    expect(util.isObject([])).toBe(false);
+  });
+  it('null is not an object', ()=>{
+    expect(util.isObject(null)).toBe(false);
+  });
+  it('undefined is not an object', ()=>{
+    expect(util.isObject(undefined)).toBe(false);
+  });
+  it('new Date() is not an object', ()=>{
+    expect(util.isObject(new Date())).toBe(false);
+  });
+  it('new Set() is not an object', ()=>{
+    expect(util.isObject(new Set())).toBe(false);
+  });
+  it(`'hello'  is not an object`, ()=>{
+    expect(util.isObject('hello')).toBe(false);
+  });
+  it(`()=>{}  is not an object`, ()=>{
+    expect(util.isObject(()=>{})).toBe(false);
+  });
+  it(`{}  is  an object`, ()=>{
+    expect(util.isObject({})).toBe(true);
+  });
+});
+
 describe('NoU tests', ()=>{
   it('null is empty', ()=>{
     expect(util.NoU(null)).toBe(true);
@@ -51,8 +78,8 @@ describe('isEmpty Tests', ()=>{
   it(`{hello: 'world', country : null} is not empty`, ()=>{
     expect(util.isEmpty({hello: 'world', country: null})).toBe(false);
   });
-  it(`{hello: 'world', country : null} is not empty`, ()=>{
-    expect(util.isEmpty({hello: 'world', country: null})).toBe(false);
+  it(`{hello: 3, country : null} is not empty`, ()=>{
+    expect(util.isEmpty({hello: 3, country: null})).toBe(false);
   });
   it(`{hello: 'world', country : undefined} is not empty`, ()=>{
     expect(util.isEmpty({hello: 'world', country: undefined})).toBe(false);

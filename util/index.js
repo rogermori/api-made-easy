@@ -1,7 +1,7 @@
 const NoU = (obj) => (obj === null || obj === 'undefined');
-function isObject(o) {
-    return o instanceof Object && o.constructor === Object;
-}
+
+const isObject = (obj) => (obj instanceof Object && obj.constructor === Object);
+
 const isEmpty = (obj) => {
   if (NoU(obj)) return true;
   switch (typeof obj) {
@@ -39,6 +39,7 @@ const emptyKeys = (obj) => {
 };
 
 module.exports = {
+  isObject,
   NoU,
   isEmpty,
   emptyKeys

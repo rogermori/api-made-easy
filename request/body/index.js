@@ -1,17 +1,16 @@
 const K = require('./constants');
 const ErrorMessages = require('../../config').errorMessage;
-const isEmpty = require('../../util').isEmpty;
+const isObject = require('../../util').isObject;
 
 module.exports = (action) => {
-  if (typeof action.payload !== 'object' || Array.isArray(action.payload)
-  ) {
+  if (!isObject(action.payload)) {
     throw new Error(ErrorMessages.body.invalidBodyRequest);
   }
- const body = Object.assign({}, action.payload);
+  const body = Object.assign({}, action.payload);
   switch (action.type) {
     case K.Intersection:
       return ( (desiredKeys) => {
-        if (isEmpty(desiredKeys)) {
+        if (!Array.isArray(desiredKeys)) {
           throw new Error(ErrorMessages.keys.invalidKeys);
         }
         return desiredKeys.reduce( (bag, key)=> {
@@ -22,7 +21,7 @@ module.exports = (action) => {
       });
     case K.Difference:
       return ( (desiredKeys) => {
-        if (isEmpty(desiredKeys)) {
+        if (!Array.isArray(desiredKeys)) {
           throw new Error(ErrorMessages.keys.invalidKeys);
         }
         const desiredKeysSet = new Set(desiredKeys);

@@ -1,5 +1,5 @@
 # Api Utilities
-A set of http request-and-response utilities commonly used in real life API development.
+A set of http code utilities commonly used in real life API development.
 ## Supported Language Features
 This project uses JavaScript [ES6](https://github.com/lukehoban/es6features)
 
@@ -7,14 +7,11 @@ This project uses JavaScript [ES6](https://github.com/lukehoban/es6features)
 ```
 > npm run test 
 ```
-
-
-## Http Response
-
 ### Util
-The utility Util module provides the following functionallities:
-- Check if a variable is null or undefined.
-- Check if an object is logically empty. 
+This module provides the following functions:
+- NoU: Check if a variable is null or undefined.
+- isObject: Check if a variable is an object.
+- isEmpty: Check if an object is logically empty. 
 ````
 const isEmpty = require('./index').isEmpty;
 const array = [
@@ -33,7 +30,7 @@ const array = [
 const nonEmptyArray = array.filter((obj)=>!isEmpty(obj));
 console.log(nonEmptyArray); // [ 1, false, { a: 1 } ]
 ```` 
-- Obtain the key names of the logically empty values of an object. For example:
+- emptyKeys: returns the key names of the logically empty values of an object.
 ````
 const instance = {
   hello: 'world',
@@ -53,7 +50,47 @@ console.log(emptyKeys(instance));
 ````
 
 ### Body
+#### Body intersection
+Creates an new object with keys specified as an array of strings, and with values coming from a target object.
+````
+const Body = require('./index');
+const difference = require('./actions').difference;
 
+const bodyRequest = {
+  name: 'Peter Parker',
+  grades: ['a', 'c'],
+  age: null,
+  dob: undefined,
+  roles: [],
+};
+
+const bodyIntersection = Body(intersection(bodyRequest));
+const nameNGrades = bodyIntersection(['name', 'grades']);
+const ageNdob = bodyIntersection(['age', 'dob']);
+const address = bodyIntersection(['address']);
+console.log(nameNGrades); // { name: 'Peter Parker', grades: [ 'a', 'c' ] }
+console.log(ageNdob); // { age: null, dob: undefined }
+console.log(address); // { address: undefined }
+```` 
+### Body Difference
+Creates a new instance from an object with keys not included in a provided array of keys.
+````
+const Body = require('./index');
+const difference = require('./actions').difference;
+
+const bodyDifference = Body(difference(bodyRequest));
+const bodyWithNoRoles = bodyDifference(['roles']);
+console.log(bodyWithNoRoles);
+/*
+{   name: 'Peter Parker',
+    grades: [ 'a', 'c' ],
+    age: null,
+    dob: undefined
+}
+*/
+````  
+
+## Response
 ### StandardResponse
 StandardResponse wraps all http-responses into successful 200-http-responses. 
 So, the caller-client decides the next step. Also, StandardResponse could be set for returning the original request. 

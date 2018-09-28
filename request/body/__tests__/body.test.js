@@ -1,5 +1,4 @@
 const Body = require('../index');
-const ErrorMessages = require('../../../config').errorMessage;
 const intersection = require('../actions').intersection;
 const difference = require('../actions').difference;
 
@@ -14,8 +13,30 @@ describe('body tests', ()=>{
       roles: [],
     };
   });
-  it('1 show throw an error', ()=>{
-    expect(true);
+  it('Body(intersection(1)) throws an error', ()=>{
+    expect(()=>Body(intersection(1))).toThrow();
+  });
+  it(`Body(intersection('1')) throws an error`, ()=>{
+    expect(()=>Body(intersection('1'))).toThrow();
+  });
+  it(`Body(intersection([])) throws an error`, ()=>{
+    expect(()=>Body(intersection([]))).toThrow();
+  });
+  it(`Body(intersection({})) do not throw an error`, ()=>{
+    expect(()=>Body(intersection({}))).not.toThrow();
+  });
+  it(`Body(intersection({})(1)) do not throw an error`, ()=>{
+    expect(()=>Body(intersection({}))(1)).toThrow();
+  });
+  it(`Body(difference({})(1)) do not throw an error`, ()=>{
+    expect(()=>Body(difference({}))(1)).toThrow();
+  });
+
+  it(`Body(intersection(bodyRequest))(['name','address']) to be { name: 'Peter Parker', address: null}`, ()=>{
+    expect(Body(intersection(bodyRequest))(['name'])).toEqual({name: 'Peter Parker', address: undefined});
+  });
+  it(`Body(difference(bodyRequest))(['dob', 'age', 'grades','roles']) to be { name: 'Peter Parker', address: null}`, ()=>{
+    expect(Body(difference(bodyRequest))(['dob', 'age', 'grades', 'roles'])).toEqual({name: 'Peter Parker'});
   });
 });
 
