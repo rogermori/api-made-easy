@@ -15,7 +15,7 @@ describe('NoU tests', ()=>{
   });
 });
 
-let date; let nestedEmpty, nestedNotEmpty;
+let date; let nestedEmpty; let nestedNotEmpty;
 
 describe('isEmpty Tests', ()=>{
   beforeAll(() => {
@@ -37,14 +37,14 @@ describe('isEmpty Tests', ()=>{
         de: [],
       },
     };
-    nestedNotEmpty = Object.assign({},nestedEmpty, { active: false});
+    nestedNotEmpty = Object.assign({}, nestedEmpty, {active: false});
   });
   it(`' ' is empty`, ()=>{
     expect(util.isEmpty(' ')).toBe(true);
   });
-    it(`[] is empty`, ()=>{
-        expect(util.isEmpty([])).toBe(true);
-    });
+  it(`[] is empty`, ()=>{
+    expect(util.isEmpty([])).toBe(true);
+  });
   it(`0 is not empty`, ()=>{
     expect(util.isEmpty(0)).toBe(false);
   });
@@ -63,11 +63,45 @@ describe('isEmpty Tests', ()=>{
   it(`any date is not empty`, ()=>{
     expect(util.isEmpty(date)).toBe(true);
   });
-    it(`nestedEmpty is empty`, ()=>{
-        expect(util.isEmpty(nestedEmpty)).toBe(true);
-    });
-    it(`nestedNotEmpty is not empty`, ()=>{
-        expect(util.isEmpty(nestedNotEmpty)).toBe(false);
-    });
+  it(`nestedEmpty is empty`, ()=>{
+    expect(util.isEmpty(nestedEmpty)).toBe(true);
+  });
+  it(`nestedNotEmpty is not empty`, ()=>{
+    expect(util.isEmpty(nestedNotEmpty)).toBe(false);
+  });
+});
+
+let noEmptyKeys; let emptyKeys;
+describe('emptyKeys', ()=>{
+  beforeAll(()=>{
+    noEmptyKeys = {hello: 'world'};
+    emptyKeys = {
+      hello: 'world',
+      address: {},
+      phone: null,
+      fax: undefined,
+      role: '',
+      rights: [],
+    };
+  });
+  it('1 returns success false', ()=>{
+    expect(util.emptyKeys(1).success).toBe(false);
+  });
+  it('null returns success false', ()=>{
+    expect(util.emptyKeys(null).success).toBe(false);
+  });
+  it('noEmptyKeys returns success true', ()=>{
+    expect(util.emptyKeys(noEmptyKeys).success).toBe(true);
+  });
+  it('noEmptyKeys returns  keys []', ()=>{
+    expect(util.emptyKeys(noEmptyKeys).keys).toEqual([]);
+  });
+
+  it('emptyKeys returns success true', ()=>{
+    expect(util.emptyKeys(emptyKeys).success).toBe(true);
+  });
+  it(`'emptyKeys returns  keys ['address','phone','fax','role','rights']`, ()=>{
+    expect(util.emptyKeys(emptyKeys).keys).toEqual(['address', 'phone', 'fax', 'role', 'rights']);
+  });
 });
 
