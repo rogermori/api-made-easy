@@ -1,4 +1,4 @@
-const util = require('../index');
+const util = require('../../index');
 
 describe('isObject tests', ()=>{
   it('[] is not an object', ()=>{

@@ -1,6 +1,6 @@
 const K = require('../constants');
-const intersection = require('../actions').intersection;
-const difference = require('../actions').difference;
+const intersection = require('../../../index').intersection;
+const difference = require('../../../index').difference;
 
 let body;
 describe('Actions', () => {
