@@ -3,10 +3,11 @@ const ErrorMessages = require('../../config').errorMessage;
 const isEmpty = require('../../util').isEmpty;
 
 module.exports = (action) => {
-  const body = Object.assign({}, action.payload);
-  if (isEmpty(body)) {
+  if (typeof action.payload !== 'object' || Array.isArray(action.payload)
+  ) {
     throw new Error(ErrorMessages.body.invalidBodyRequest);
   }
+ const body = Object.assign({}, action.payload);
   switch (action.type) {
     case K.Intersection:
       return ( (desiredKeys) => {

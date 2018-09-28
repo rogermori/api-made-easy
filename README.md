@@ -14,7 +14,7 @@ This project uses JavaScript [ES6](https://github.com/lukehoban/es6features)
 ### Util
 The utility Util module provides the following functionallities:
 - Check if a variable is null or undefined.
-- Check if an object is logically empty. The following objects are considered logically empty. 
+- Check if an object is logically empty. 
 ````
 const isEmpty = require('./index').isEmpty;
 const array = [
@@ -56,12 +56,10 @@ console.log(emptyKeys(instance));
 
 ### StandardResponse
 StandardResponse wraps all http-responses into successful 200-http-responses. 
-So, the caller-client decides the next step. 
+So, the caller-client decides the next step. Also, StandardResponse could be set for returning the original request. 
 
 For example, upon receiving 400's or 500's http-response-codes, some frameworks will re send the request automatically again and again 
 . With the StandardResponse the caller-client can change this behaviour.    
-
-StandardResponse would return the original requests, which is very useful in debug mode. 
 
 #### Usage
 ````
