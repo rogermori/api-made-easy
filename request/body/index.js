@@ -1,6 +1,6 @@
 const K = require('./constants');
 const ErrorMessages = require('../../config').errorMessage;
-const isObject = require('../../util').isObject;
+const isObject = require('objects-made-easy').isObject;
 
 module.exports = (action) => {
   if (!isObject(action.payload)) {

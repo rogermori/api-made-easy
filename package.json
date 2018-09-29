@@ -1,10 +1,11 @@
 {
   "name": "api-meady-easy",
-  "version": "1.0.0",
-  "description": "A set of http code utilities commonly used in real life API development.",
+  "version": "1.0.1",
+  "description": "Node.js http-utility functions commonly used in  API development.",
   "main": "index.js",
   "dependencies": {
-    "eslint": "^5.6.0"
+    "eslint": "^5.6.0",
+    "objects-made-easy": "^1.0.1"
   },
   "devDependencies": {
     "eslint-config-google": "^0.10.0",
