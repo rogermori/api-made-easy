@@ -1,6 +1,6 @@
 {
   "name": "api-meady-easy",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Node.js http-utility functions commonly used in  API development.",
   "main": "index.js",
   "dependencies": {
