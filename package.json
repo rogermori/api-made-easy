@@ -1,6 +1,6 @@
 {
   "name": "api-made-easy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node.js http-utility functions commonly used in  API development.",
   "main": "index.js",
   "dependencies": {

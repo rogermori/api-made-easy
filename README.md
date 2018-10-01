@@ -21,7 +21,7 @@ This project uses JavaScript [ES6](https://github.com/lukehoban/es6features)
 Creates a new object from a given object by inclusion.
 ````
 const Body = require('api-made-easy');
-const difference = require('./actions').difference;
+const difference = require('api-made-easy').intersection;
 
 const bodyRequest = {
   name: 'Peter Parker',
