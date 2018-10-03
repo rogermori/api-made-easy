@@ -32,8 +32,12 @@ describe('body tests', ()=>{
     expect(()=>Body(difference({}))(1)).toThrow();
   });
 
-  it(`Body(intersection(bodyRequest))(['name','address']) to be { name: 'Peter Parker', address: null}`, ()=>{
-    expect(Body(intersection(bodyRequest))(['name'])).toEqual({name: 'Peter Parker', address: undefined});
+  it(`Body(intersection(bodyRequest))(['name',{grades : "scores" }, 'address']) 
+      to be { name: 'Peter Parker', scores: ['a','c'], address: undefined}`, ()=>{
+    expect(Body(intersection(bodyRequest))(['name', {grades: 'scores'}, 'address'])).toEqual(
+        {name: 'Peter Parker',
+          scores: ['a', 'c'],
+          address: undefined});
   });
   it(`Body(difference(bodyRequest))(['dob', 'age', 'grades','roles']) to be { name: 'Peter Parker', address: null}`, ()=>{
     expect(Body(difference(bodyRequest))(['dob', 'age', 'grades', 'roles'])).toEqual({name: 'Peter Parker'});

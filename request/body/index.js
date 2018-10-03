@@ -1,6 +1,7 @@
+const isObject = require('objects-made-easy').isObject;
+const isEmpty = require('objects-made-easy').isEmpty;
 const K = require('./constants');
 const ErrorMessages = require('../../config').errorMessage;
-const isObject = require('objects-made-easy').isObject;
 
 module.exports = (action) => {
   if (!isObject(action.payload)) {
@@ -14,7 +15,12 @@ module.exports = (action) => {
           throw new Error(ErrorMessages.keys.invalidKeys);
         }
         return desiredKeys.reduce( (bag, key)=> {
-          bag[key] = body[key];
+          if (isObject(key) && !isEmpty(key)) {
+            const subKey = Object.keys(key)[0];
+            bag[key[subKey]] = body[subKey];
+          } else {
+            bag[key] = body[key];
+          }
           return bag;
         },
         {});
