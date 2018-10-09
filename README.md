@@ -1,5 +1,5 @@
 # Api Utilities
-Node.js http-utility functions commonly used in  API development.
+Node.js utility functions commonly used in  API development.
 ## Supported Language Features
 This project uses JavaScript [ES6](https://github.com/lukehoban/es6features)
 
@@ -11,7 +11,7 @@ This project uses JavaScript [ES6](https://github.com/lukehoban/es6features)
 ```
 > npm run test 
 ```
-#### Run example
+#### Run examples
 ```
 > node request/body/example
 ```
@@ -73,3 +73,26 @@ const happyResponse = new StandardResponse(
     {id:1, name: 'Peter Parker'}
 ).getResponse();
 ````
+### Header
+Utility functions for handling headers
+
+### Json Web Token Header
+````
+const const JWt = require('api-made-easy').Headers.JWt;
+console.log(JWt('tk12345'));
+/*
+{ 'Content-Type': applicationJson(),
+  'Accept': applicationJson(),
+  'Authorization': 'Bearer tk12345'
+}
+*/
+console.log(JWt('tk12345',false));
+/*
+{ 'Content-Type': applicationJson(),
+  'Accept': applicationJson(),
+  'Authorization': 'tk12345'
+}
+*/    
+
+````
+
