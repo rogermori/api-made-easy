@@ -1,7 +1,7 @@
 const logBody = require('./logBody');
 
-const ping = ()=>(req, res, next)=> {
-  res.json({hi: 'I am alive'});
+const ping = (msg)=>(req, res, next)=> {
+  res.json(msg);
   next();
 };
 
