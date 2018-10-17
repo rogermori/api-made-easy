@@ -67,10 +67,11 @@ Upon receiving 400's or 500's http-response-codes, some frameworks will re send 
 const StandardResponse = require('api-made-easy').StandardResponse;
 
 const happyResponse = new StandardResponse(
-    true,
-    'All good',
-    {id: 1},
-    {id:1, name: 'Peter Parker'}
+    true,         //success
+    'All good',   //sucess message option
+    {id: 1},      //response
+    {id:1, name: 'Peter Parker'}, //orignal request
+    true          //Include orignal request in response
 ).getResponse();
 ````
 ### Header

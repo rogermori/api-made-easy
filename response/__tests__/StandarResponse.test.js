@@ -25,11 +25,8 @@ describe('StandardResponse', ()=>{
         true
     ).getResponse();
   });
-  it('instance contains 6 keys', ()=>{
-    expect(Object.keys(happyResponse).length).toBe(6);
-  });
-  it('default httpCode = 200', ()=>{
-    expect(happyResponse.httpcode).toBe(200);
+  it('instance contains 4 keys', ()=>{
+    expect(Object.keys(happyResponse).length).toBe(4);
   });
   it('request must be blank in non debug mode', ()=>{
     expect(happyResponse.request.length).toBe(0);
