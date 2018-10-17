@@ -78,7 +78,7 @@ Utility functions for handling headers
 
 ### Json Web Token Header
 ````
-const const JWt = require('api-made-easy').Headers.JWt;
+const JWt = require('api-made-easy').Headers.JWt;
 console.log(JWt('tk12345'));
 /*
 { 'Content-Type': application/json,
