@@ -82,14 +82,14 @@ const const JWt = require('api-made-easy').Headers.JWt;
 console.log(JWt('tk12345'));
 /*
 { 'Content-Type': application/json,
-  'Accept': applicationJson(),
+  'Accept': application/json,
   'Authorization': 'Bearer tk12345'
 }
 */
 console.log(JWt('tk12345',false));
 /*
 { 'Content-Type': application/json,
-  'Accept': applicationJson(),
+  'Accept': application/json,
   'Authorization': 'tk12345'
 }
 */    
