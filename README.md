@@ -81,14 +81,14 @@ Utility functions for handling headers
 const const JWt = require('api-made-easy').Headers.JWt;
 console.log(JWt('tk12345'));
 /*
-{ 'Content-Type': applicationJson(),
+{ 'Content-Type': application/json,
   'Accept': applicationJson(),
   'Authorization': 'Bearer tk12345'
 }
 */
 console.log(JWt('tk12345',false));
 /*
-{ 'Content-Type': applicationJson(),
+{ 'Content-Type': application/json,
   'Accept': applicationJson(),
   'Authorization': 'tk12345'
 }
