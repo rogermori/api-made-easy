@@ -20,7 +20,7 @@ describe('body tests', ()=>{
     expect(()=>Body(intersection('1'))).toThrow();
   });
   it(`Body(intersection([])) throws an error`, ()=>{
-    expect(()=>Body(intersection([]))).toThrow();
+    expect(()=>Body(intersection([]))).not.toThrow();
   });
   it(`Body(intersection({})) do not throw an error`, ()=>{
     expect(()=>Body(intersection({}))).not.toThrow();
