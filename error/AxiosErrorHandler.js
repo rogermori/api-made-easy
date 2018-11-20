@@ -21,6 +21,7 @@ const messageErrorHandler = (error, logger) => {
     response = error.message;
   }
   logger(response);
+  logger(inspect(coalesce(error.config, '')));
   return response;
 };
 

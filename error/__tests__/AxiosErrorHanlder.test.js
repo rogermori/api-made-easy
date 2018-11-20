@@ -5,11 +5,13 @@ let instanceOfError; let errorResponse; let errorRequest;
 describe('Axios Message Error Handler', ()=>{
   beforeEach(()=>{
     instanceOfError = new Error('an error has ocurred');
+    instanceOfError.config = 'locuas';
     errorResponse = {
       response: {
         status: 200,
         data: 'an error has ocurred',
       },
+      config: "Loco",
     };
     errorRequest = {
       request: 'an error has ocurred',
