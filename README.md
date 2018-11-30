@@ -64,15 +64,28 @@ Upon receiving 400's or 500's http-response-codes, some frameworks will re send 
 . With the StandardResponse the caller-client can modify this behaviour.    
 
 ````
-const StandardResponse = require('api-made-easy').StandardResponse;
+const {StandardResponse,createSuccessResponse, 
+       createErrorResponse} = require('api-made-easy');
 
 const happyResponse = new StandardResponse(
     true,         //success
     'All good',   //sucess message option
     {id: 1},      //response
-    {id:1, name: 'Peter Parker'}, //orignal request
+    {id:1, name: 'Peter Parker'}, //Context Info
     true          //Include orignal request in response
 ).getResponse();
+
+const successResponse = createSuccessResponse(
+    {id: 1},      //response
+    {id:1, name: 'Peter Parker'}, //Context Info
+    'success message"  //Optional
+)
+
+const errorResponse = createErrorResponse(
+    'error Message',      
+    {id:1, name: 'Peter Parker'} //Context Info
+)
+
 ````
 ### Header
 Utility functions for handling headers
