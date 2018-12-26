@@ -13,7 +13,7 @@ class StandardResponse {
   getResponse() {
     const myResponse = Object.assign({}, this.response);
     if (this.debug) {
-      myResponse.request = util.inspect(this.response.request, {depth: 20, breakLength: Infinity});
+      myResponse.request = util.inspect(this.response.request, {depth: 5, breakLength: Infinity});
     } else {
       myResponse.request = '';
     }

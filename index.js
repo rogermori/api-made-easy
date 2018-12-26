@@ -4,6 +4,7 @@ const {StandardResponse, createSuccessResponse, createErrorResponse} = require('
 const Headers = require('./header');
 const Middleware = require('./middleware');
 const AxiosErrorHandler = require('./error/AxiosErrorHandler');
+const MessagePublisher = require('./message');
 
 module.exports = {
   StandardResponse,
@@ -15,5 +16,6 @@ module.exports = {
   Headers,
   Middleware,
   AxiosErrorHandler,
+  MessagePublisher,
 };
 
